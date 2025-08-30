@@ -40,38 +40,6 @@ tests/
 └── test_gestor_partida.py
 ```
 
-## Metodología TDD - Commits Obligatorios
-
-**IMPORTANTE**: Para evaluar que siguieron TDD correctamente, deben hacer commits siguiendo el ciclo Rojo-Verde-Refactor:
-
-### Patrón de Commits Requerido
-Para cada funcionalidad, deben hacer **exactamente 3 commits** en este orden:
-
-1. **🔴 ROJO**: `git commit -m "RED: test para [funcionalidad] - falla como esperado"`
-   - Solo el test, sin implementación
-   - El test debe fallar por la razón correcta
-   - Ejecutar `pytest` debe mostrar el fallo
-
-2. **🟢 VERDE**: `git commit -m "GREEN: implementación mínima para [funcionalidad]"`
-   - Código mínimo para hacer pasar el test
-   - Ejecutar `pytest` debe mostrar todos los tests pasando
-   - No importa si el código es "feo" en esta etapa
-
-3. **🔵 REFACTOR**: `git commit -m "REFACTOR: mejora código de [funcionalidad]"`
-   - Mejorar la implementación sin cambiar funcionalidad
-   - Todos los tests siguen pasando
-   - Solo si hay algo que refactorizar (sino omitir este commit)
-
-### Ejemplo de Secuencia de Commits
-```
- RED: test para generar valor aleatorio en dado - falla como esperado
- GREEN: implementación mínima para generar valor aleatorio en dado  
- REFACTOR: mejora método de generación con dependency injection
- RED: test para denominar pinta del dado - falla como esperado
- GREEN: implementación mínima para denominar pinta del dado
- ...
-```
-
 ## Entregables
 1. Código fuente con cobertura de pruebas > 90%
 2. Todas las pruebas deben pasar
