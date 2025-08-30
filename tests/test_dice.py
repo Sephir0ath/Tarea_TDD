@@ -1,5 +1,6 @@
 import unittest
 
+from src.game.dice import DiceNames
 from src.game.dice import Dice
 
 import sys
@@ -11,3 +12,13 @@ class TestDice(unittest.TestCase):
         dice = Dice()
         dice.roll()
         assert 1 <= dice.value <= 6
+
+    def test_guardar_nombre_del_dado(self):
+        valid_names = []
+        for x in DiceNames:
+            valid_names.append(x.value)
+
+        dice = Dice()
+        dice.roll()
+
+        assert dice.value_name in valid_names
