@@ -16,3 +16,7 @@ class BetValidator:
         if new_bet[0] > self.current_bet[0]:
             self.current_bet = new_bet
             return True
+
+        elif new_bet[0] == self.current_bet[0] and new_bet[1] > self.current_bet[1]:
+            self.current_bet = new_bet
+            return True
