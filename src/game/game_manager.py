@@ -20,3 +20,12 @@ class GameManager:
         """
         self.initial_player = randint(0, len(self.players)-1)
 
+    def next_turn(self):
+        """
+        Setea el siguiente jugador (dentro de la misma ronda)
+
+        Returns:
+            None
+        """
+        self.current_player = (self.current_player + 1) % self.player_quantity
+
