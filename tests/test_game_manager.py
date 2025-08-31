@@ -4,8 +4,7 @@ from src.game.game_manager import GameManager
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-
-
+ 
 class TestGameManager(unittest.TestCase):
     def setUp(self):
         self.player_quantity = 4

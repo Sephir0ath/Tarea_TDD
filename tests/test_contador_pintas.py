@@ -7,7 +7,6 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
-
 class TestContadorPintas(unittest.TestCase):
     def setUp(self):
         self.contador_pintas = ContadorPintas()
