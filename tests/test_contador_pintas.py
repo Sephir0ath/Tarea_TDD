@@ -47,4 +47,4 @@ class TestContadorPintas(unittest.TestCase):
 
         tontos_quantity = self.contador_pintas.contar_pinta(2, self.cachos_list, False)
         assert tontos_quantity == 5
-    
+

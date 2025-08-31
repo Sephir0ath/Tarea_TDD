@@ -1,4 +1,5 @@
 import unittest
+
 from src.game.dice import Dice
 from src.game.round_referee import RoundReferee
 from src.game.game_manager import GameManager
@@ -35,11 +36,20 @@ class TestRoundReferee(unittest.TestCase):
         self.assertEqual(len(current_player.get_dices()), 4)
 
     def test_se_remueve_jugador(self):
-        self.manager.players[0].dices = [Dice()]
-        self.manager.current_player = 0
+        self.manager.players[2].dices = [Dice()]
         self.referee.current_bet = (4, 3)
 
         self.referee.handle_doubt(self.manager.players, self.manager.current_player, self.manager.has_activated_special_round)  # Pierde el jugador que hizo la apuesta (el anterior al actual)
         self.assertEqual(len(self.manager.players), self.player_quantity-1)
 
+    def test_arbitro_maneja_calzo(self):
+        self.referee.current_bet = (self.player_quantity*5, 3) # La cantidad exacta de trenes que están en juego
+        self.referee.handle_calzo(self.manager.players, self.manager.current_player, self.manager.has_activated_special_round)
+        actual_player_dice_quantity = len(self.manager.players[self.manager.current_player].dices)
+        self.assertEqual(actual_player_dice_quantity, 5) # El jugador no pierde dados
 
+
+        self.referee.current_bet = (self.player_quantity*5, 2)
+        self.referee.handle_calzo(self.manager.players, self.manager.current_player, self.manager.has_activated_special_round)
+        actual_player_dice_quantity = len(self.manager.players[self.manager.current_player].dices)
+        self.assertEqual(actual_player_dice_quantity, 4)  # El jugador pierde dado

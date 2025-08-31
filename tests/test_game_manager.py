@@ -1,7 +1,4 @@
 import unittest
-from idlelib.run import manage_socket
-from unittest.mock import MagicMock
-
 from src.game.game_manager import GameManager
 
 import sys
