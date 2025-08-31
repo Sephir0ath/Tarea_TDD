@@ -29,3 +29,12 @@ class TestBetValidator(unittest.TestCase):
         new_bet = (2, 2)
         is_bet_valid = self.bet_validator.check_bet(new_bet, False)
         self.assertFalse(is_bet_valid)
+    
+    def test_validar_apuesta_inicial_con_ases(self):
+        self.round_referee.current_bet = None
+        self.bet_validator = BetValidator()
+
+        # Comprobar que si una apuesta inicial es de aces y es una ronda normal entonces no es valida
+        first_bet = (2, 1)
+        is_bet_valid = self.bet_validator.check_bet(first_bet, False)
+        self.assertFalse(is_bet_valid)
