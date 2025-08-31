@@ -1,6 +1,7 @@
 import unittest
 
 from src.game.cacho import Cacho
+from src.game.dice import Dice
 
 import sys
 import os

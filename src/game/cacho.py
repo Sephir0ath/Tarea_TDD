@@ -24,4 +24,20 @@ class Cacho:
         for dice in self.dices:
             dice.roll()
 
+    def remove_dice(self):
+        """
+        Remueve un dado del cacho.
+                    
+        Returns:
+            None
+        """
+        self.dices.pop()
 
+    def add_dice(self):
+        """Si es que no tiene 5 dados, añade uno
+
+        Returns:
+            None
+        """
+        if len(self.dices) < 5:
+            self.dices.append(Dice())
