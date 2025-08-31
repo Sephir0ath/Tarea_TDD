@@ -7,6 +7,9 @@ class BetValidator:
             if not is_special_round and not new_bet[1] == 1:
                 self.current_bet = new_bet
                 return True
+            if is_special_round and new_bet[1] == 1:
+                self.current_bet = new_bet
+                return True
             else:
                 return False
 
