@@ -2,11 +2,10 @@ class BetValidator:
     def __init__(self):
         self.current_bet = None
 
-    def check_bet(self, new_bet):
+    def check_bet(self, new_bet, is_special_round):
         if self.current_bet is None:
-            self.current_bet = new_bet
-            return True
-        else:
-            return False
-
-        return False
+            if not is_special_round:
+                self.current_bet = new_bet
+                return True
+            else:
+                return False
