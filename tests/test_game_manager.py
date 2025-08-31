@@ -5,6 +5,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
+
 class TestGameManager(unittest.TestCase):
     def setUp(self):
         self.player_quantity = 4
@@ -22,3 +23,4 @@ class TestGameManager(unittest.TestCase):
         self.manager.next_turn()
 
         self.assertEqual(self.manager.current_player, 0)
+

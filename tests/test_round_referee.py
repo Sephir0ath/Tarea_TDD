@@ -7,7 +7,7 @@ from src.game.game_manager import GameManager
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-
+ 
 class TestRoundReferee(unittest.TestCase):
     def setUp(self):
         self.referee = RoundReferee()
@@ -58,9 +58,10 @@ class TestRoundReferee(unittest.TestCase):
         # El jugador actual no tiene un solo dado y tampoco están en juego menos de la mitad de los dados (condiciones de calzo)
         self.assertFalse(self.referee.validate_calzo(self.manager.players, self.manager.current_player, self.manager.total_player_quantity))
 
-        self.referee.current_bet = (self.player_quantity*5, 3)
+        self.referee.current_bet = (self.player_quantity * 5, 3)
         self.manager.players[self.manager.current_player].dices = [Dice()]
         self.assertTrue(self.referee.validate_calzo(self.manager.players, self.manager.current_player, self.manager.total_player_quantity))
+
 
     def test_metodos_de_casos_dejan_con_un_dado(self):
         self.referee.current_bet = (4, 3)
@@ -81,3 +82,12 @@ class TestRoundReferee(unittest.TestCase):
         self.referee.is_special_round = True
         self.referee.handle_calzo(self.manager.players, self.manager.current_player,self.manager.has_activated_special_round, self.manager.player_quantity)
         self.assertFalse(self.referee.is_special_round)
+
+    def test_validar_existencia_apuesta(self):
+       self.referee.current_bet = None
+       is_calzo_valid = self.referee.validate_calzo(self.manager.players, self.manager.current_player, self.manager.total_player_quantity)
+       self.assertFalse(is_calzo_valid)
+
+       is_doubt_valid =  self.referee.validate_doubt()
+       self.assertFalse(is_doubt_valid)
+
