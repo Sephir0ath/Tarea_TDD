@@ -1,4 +1,5 @@
 import unittest
+from src.game.dice import Dice
 from src.game.round_referee import RoundReferee
 from src.game.game_manager import GameManager
 
@@ -32,4 +33,13 @@ class TestRoundReferee(unittest.TestCase):
         self.referee.handle_doubt(self.manager.players, self.manager.current_player)
         current_player = self.manager.players[self.manager.current_player]
         self.assertEqual(len(current_player.get_dices()), 4)
+
+    def test_se_remueve_jugador(self):
+        self.manager.players[0].dices = [Dice()]
+        self.manager.current_player = 0
+        self.referee.current_bet = (4, 3)
+
+        self.referee.handle_doubt(self.manager.players, self.manager.current_player, self.manager.has_activated_special_round)  # Pierde el jugador que hizo la apuesta (el anterior al actual)
+        self.assertEqual(len(self.manager.players), self.player_quantity-1)
+
 
