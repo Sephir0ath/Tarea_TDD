@@ -1,6 +1,6 @@
 
 class ContadorPintas:
-    def contar_pinta(self, dice_value, cachos, is_special_round=True):
+    def contar_pinta(self, dice_value, cachos, is_special_round):
         counter = 0
         for cacho in cachos:
             cacho_dices = cacho.get_dices()
