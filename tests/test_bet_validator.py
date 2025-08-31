@@ -16,6 +16,6 @@ class TestBetValidator(unittest.TestCase):
         self.assertIsNone(self.bet_validator.current_bet)
 
         first_bet = (2, 2)
-        is_bet_valid = self.bet_validator.check_bet(first_bet, False)
+        is_bet_valid = self.bet_validator.check_bet(first_bet)
         self.assertTrue(is_bet_valid)
 
