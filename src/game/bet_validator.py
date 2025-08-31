@@ -4,7 +4,7 @@ class BetValidator:
 
     def check_bet(self, new_bet, is_special_round):
         if self.current_bet is None:
-            if not is_special_round:
+            if not is_special_round and not new_bet[1] == 1:
                 self.current_bet = new_bet
                 return True
             else:
@@ -13,5 +13,3 @@ class BetValidator:
         if new_bet[0] > self.current_bet[0]:
             self.current_bet = new_bet
             return True
-
-        return False
