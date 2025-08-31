@@ -19,3 +19,13 @@ class TestBetValidator(unittest.TestCase):
         is_bet_valid = self.bet_validator.check_bet(first_bet, False)
         self.assertTrue(is_bet_valid)
 
+    def test_validar_apuesta_mayor(self):
+        self.bet_validator.current_bet = (1,5)
+        self.assertTrue(self.bet_validator.check_bet((3, 5), False))
+        self.assertTrue(self.bet_validator.current_bet, (3,5))
+
+    def test_validar_apuesta_menor(self):
+        self.bet_validator.current_bet = (3,2)
+        new_bet = (2, 2)
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertFalse(is_bet_valid)
