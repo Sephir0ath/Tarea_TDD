@@ -31,3 +31,4 @@ class GameManager:
             None
         """
         self.current_player = (self.current_player + 1) % self.player_quantity
+

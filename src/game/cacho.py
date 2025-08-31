@@ -25,8 +25,8 @@ class Cacho:
 
     def remove_dice(self):
         """
-        Remueve un dado del cacho.
-                    
+        Remueve un dado del cacho
+
         Returns:
             None
         """
@@ -38,5 +38,6 @@ class Cacho:
         Returns:
             None
         """
-        if len(self.dices) < 5:
+        if (len(self.dices) < 5):
             self.dices.append(Dice())
+

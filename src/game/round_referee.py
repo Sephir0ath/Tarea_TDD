@@ -26,10 +26,21 @@ class RoundReferee:
         if dice_count == 0:
             players.pop(loser_index)
 
-
         elif dice_count == 1 and not special_round_list[loser_index]:
             special_round_list[loser_index] = True
             self.is_special_round = True
+
+        return loser_index
+
+    def handle_calzo(self, players, current_player, special_round_list):
+        if self.counter.contar_pinta(self.current_bet[1], players, self.is_special_round) == self.current_bet[0]:
+            players[current_player].add_dice() # el que calzó gana un dado
+        else:
+            players[current_player].remove_dice()
+
+
+
+        return current_player
 
 
     def remove_player(self, players, player_index):
