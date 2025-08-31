@@ -9,3 +9,9 @@ class BetValidator:
                 return True
             else:
                 return False
+
+        if new_bet[0] > self.current_bet[0]:
+            self.current_bet = new_bet
+            return True
+
+        return False
