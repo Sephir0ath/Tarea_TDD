@@ -23,3 +23,11 @@ class TestCacho(unittest.TestCase):
 
         for dice_value in new_values:
             assert 1 <= dice_value <= 6
+
+    def test_cacho_removes_and_adds_dice(self):
+        self.cacho.dices = [Dice()]
+        self.cacho.remove_dice()
+        assert len(self.cacho.dices) == 0
+
+        self.cacho.add_dice()
+        assert len(self.cacho.dices) == 1
