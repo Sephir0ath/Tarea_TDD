@@ -38,6 +38,6 @@ class Cacho:
         Returns:
             None
         """
-        if (len(self.dices) < 5):
+        if len(self.dices) < 5:
             self.dices.append(Dice())
 

@@ -1,5 +1,7 @@
 from .cacho import Cacho
 from random import randint
+from .round_referee import RoundReferee
+
 
 class GameManager:
     def __init__(self, player_quantity):
@@ -7,7 +9,9 @@ class GameManager:
         self.players = []
         self.initial_player = None
         self.current_player = None
+        self.total_player_quantity = player_quantity
         self.has_activated_special_round = []
+
 
         for i in range(player_quantity):
             self.players.append(Cacho())
