@@ -20,3 +20,8 @@ class TestGameManager(unittest.TestCase):
         self.assertGreaterEqual(self.manager.initial_player, 0)
         self.assertLessEqual(self.manager.initial_player, self.manager.player_quantity)
 
+    def test_asignar_siguiente_turno(self):
+        self.manager.current_player = 3
+        self.manager.next_turn()
+
+        self.assertEqual(self.manager.current_player, 0)
