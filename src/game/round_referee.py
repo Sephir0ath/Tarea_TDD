@@ -6,9 +6,34 @@ class RoundReferee:
         self.is_special_round = False
         self.counter = ContadorPintas()
 
-    def handle_doubt(self, players, current_player):
+    def handle_doubt(self, players, current_player, special_round_list):
+        """
+        Maneja la lógica cuando un jugador duda, primero determina qué jugador perdió,
+        luego si es que la ronda actual era una ronda especial, resetea a las rondas normales,
+        después quita un dado al perdedor y verifica si no hay que activar ronda especial o si hay que eliminar a un jugador.
+        """
         if self.counter.contar_pinta(self.current_bet[1], players, self.is_special_round) >= self.current_bet[0]:
-            players[current_player].remove_dice()
+            loser_index = current_player  # El que dudó pierde
         else:
-            last_player = (current_player-1) % len(players)
-            players[last_player].remove_dice()
+            loser_index = (current_player - 1) % len(players)  # El que apostó pierde
+
+        if self.is_special_round:
+            self.is_special_round = False
+
+        players[loser_index].remove_dice()
+        dice_count = len(players[loser_index].get_dices())
+
+        if dice_count == 0:
+            players.pop(loser_index)
+
+
+        elif dice_count == 1 and not special_round_list[loser_index]:
+            special_round_list[loser_index] = True
+            self.is_special_round = True
+
+
+    def remove_player(self, players, player_index):
+        """
+        Remueve un jugador que ya no tiene dados
+        """
+        players.pop(player_index)

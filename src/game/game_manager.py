@@ -6,10 +6,12 @@ class GameManager:
         self.player_quantity = player_quantity
         self.players = []
         self.initial_player = None
+        self.current_player = None
+        self.has_activated_special_round = []
 
         for i in range(player_quantity):
             self.players.append(Cacho())
-
+            self.has_activated_special_round.append(False)
 
     def set_initial_player(self):
         """
@@ -19,6 +21,7 @@ class GameManager:
             None
         """
         self.initial_player = randint(0, len(self.players)-1)
+        self.current_player = self.initial_player
 
     def next_turn(self):
         """
@@ -28,4 +31,3 @@ class GameManager:
             None
         """
         self.current_player = (self.current_player + 1) % self.player_quantity
-
