@@ -89,8 +89,16 @@ class RoundReferee:
         if self.current_bet is None:
             return False
 
+        return True
+
     def remove_player(self, players, player_index):
         """
         Remueve un jugador que ya no tiene dados
         """
         players.pop(player_index)
+
+    def get_special_round(self):
+        """
+        Obtiene si la ronda es especial
+        """
+        return self.is_special_round
