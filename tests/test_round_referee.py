@@ -61,3 +61,23 @@ class TestRoundReferee(unittest.TestCase):
         self.referee.current_bet = (self.player_quantity*5, 3)
         self.manager.players[self.manager.current_player].dices = [Dice()]
         self.assertTrue(self.referee.validate_calzo(self.manager.players, self.manager.current_player, self.manager.total_player_quantity))
+
+    def test_metodos_de_casos_dejan_con_un_dado(self):
+        self.referee.current_bet = (4, 3)
+        self.manager.players[2].dices = [Dice(), Dice()]
+
+        self.referee.handle_calzo(self.manager.players, self.manager.current_player,self.manager.has_activated_special_round, self.manager.player_quantity)
+
+    def test_eliminacion_de_jugador(self):
+        self.referee.remove_player(self.manager.players, self.manager.current_player)
+        self.assertEqual(len(self.manager.players), self.player_quantity-1)
+
+    def test_desactivar_ronda_especial(self):
+        self.referee.current_bet = (2, 2)
+        self.referee.is_special_round = True
+        self.referee.handle_doubt(self.manager.players, self.manager.current_player,self.manager.has_activated_special_round, self.manager.player_quantity)
+        self.assertFalse(self.referee.is_special_round)
+
+        self.referee.is_special_round = True
+        self.referee.handle_calzo(self.manager.players, self.manager.current_player,self.manager.has_activated_special_round, self.manager.player_quantity)
+        self.assertFalse(self.referee.is_special_round)
