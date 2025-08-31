@@ -91,3 +91,6 @@ class TestRoundReferee(unittest.TestCase):
        is_doubt_valid =  self.referee.validate_doubt()
        self.assertFalse(is_doubt_valid)
 
+    def test_validar_obtener_valor_ronda_especial(self):
+        self.referee.is_special_round = True
+        self.assertTrue(self.referee.get_special_round())
