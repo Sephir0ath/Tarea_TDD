@@ -29,7 +29,7 @@ class TestBetValidator(unittest.TestCase):
         new_bet = (2, 2)
         is_bet_valid = self.bet_validator.check_bet(new_bet, False)
         self.assertFalse(is_bet_valid)
-    
+
     def test_validar_apuesta_inicial_con_ases(self):
         self.round_referee.current_bet = None
         self.bet_validator = BetValidator()
@@ -38,3 +38,10 @@ class TestBetValidator(unittest.TestCase):
         first_bet = (2, 1)
         is_bet_valid = self.bet_validator.check_bet(first_bet, False)
         self.assertFalse(is_bet_valid)
+
+    def test_validar_apuesta_mayor_con_pinta(self):
+        self.bet_validator.current_bet = (3,3)
+        new_bet = (3, 4)
+
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertTrue(is_bet_valid)
