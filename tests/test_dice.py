@@ -1,6 +1,6 @@
 import unittest
 
-from src.game.dice import DiceNames
+from src.game.enums import DiceNames
 from src.game.dice import Dice
 
 import sys
