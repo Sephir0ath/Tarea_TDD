@@ -29,3 +29,20 @@ class TestContadorPintas(unittest.TestCase):
 
         tontos_quantity = self.contador_pintas.contar_pinta(2, self.cachos_list)
         self.assertEqual(tontos_quantity, 4)
+
+    def test_contar_aces_como_comodines(self):
+        for i in range(4):
+            self.cachos_list[i].roll_dices()
+
+        for i in self.cachos_list:
+            for x in range(5):
+                if x == 0:
+                    i.get_dices()[x].value =2
+                else:
+                    i.get_dices()[x].value = 3
+
+            self.cachos_list[3].get_dices()[4].value = 1
+
+        tontos_quantity = self.contador_pintas.contar_pinta(2, self.cachos_list, False)
+        assert tontos_quantity == 5
+    
