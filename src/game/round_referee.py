@@ -2,7 +2,7 @@ from .contador_pintas import ContadorPintas
 
 class RoundReferee:
     def __init__(self):
-        self.current_bet = None
+        self.current_bet = ()
         self.is_special_round = False
         self.counter = ContadorPintas()
 
@@ -72,10 +72,6 @@ class RoundReferee:
         """
         Indica si el jugador puede calzar o no
         """
-        if self.current_bet is None:
-            return False
-
-        return True
         dice_count = 0
         for player in players:
             dice_count += len(player.get_dices())
@@ -84,10 +80,6 @@ class RoundReferee:
             return True
 
         return False
-
-    def validate_doubt(self):
-        if self.current_bet is None:
-            return False
 
     def remove_player(self, players, player_index):
         """
