@@ -13,7 +13,15 @@ class BetValidator:
             else:
                 return False
 
-        if new_bet[0] > self.current_bet[0]:
+        if self.current_bet[1] == 1 and new_bet[1] != 1 and not is_special_round:
+            min_required = self.current_bet[0] * 2 + 1
+            if new_bet[0] >= min_required:
+                self.current_bet = new_bet
+                return True
+            else:
+                return False
+
+        elif new_bet[0] > self.current_bet[0]:
             self.current_bet = new_bet
             return True
 
