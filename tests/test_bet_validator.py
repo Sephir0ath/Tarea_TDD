@@ -45,3 +45,14 @@ class TestBetValidator(unittest.TestCase):
 
         is_bet_valid = self.bet_validator.check_bet(new_bet, False)
         self.assertTrue(is_bet_valid)
+
+    def test_validar_apuesta_de_division_par_e_impar(self):
+        self.bet_validator.current_bet = (4,2)
+        new_bet = (2,1)
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertTrue(is_bet_valid)
+
+        self.bet_validator.current_bet = (5,3)
+        new_bet = (3,1)
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertTrue(is_bet_valid)
