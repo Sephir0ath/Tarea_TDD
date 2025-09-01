@@ -56,3 +56,15 @@ class TestBetValidator(unittest.TestCase):
         new_bet = (3,1)
         is_bet_valid = self.bet_validator.check_bet(new_bet, False)
         self.assertTrue(is_bet_valid)
+
+    def test_salir_de_aces(self):
+        # Forma invalida de salir de ases
+        self.bet_validator.current_bet = (4,1)
+        new_bet = (5,2)
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertFalse(is_bet_valid)
+
+        # Forma valida de salir de ases
+        new_bet = (9, 2)
+        is_bet_valid = self.bet_validator.check_bet(new_bet, False)
+        self.assertTrue(is_bet_valid)
