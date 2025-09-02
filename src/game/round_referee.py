@@ -75,7 +75,6 @@ class RoundReferee:
         if self.current_bet is None:
             return False
 
-        return True
         dice_count = 0
         for player in players:
             dice_count += len(player.get_dices())
