@@ -39,5 +39,11 @@ class GameManager:
         return self.current_player
 
     def roll_dices(self):
+        """
+        Lanza todos los dados de todos los jugadores en la partida
+
+        Returns:
+             None
+        """
         for x in self.players:
             x.roll_dices()

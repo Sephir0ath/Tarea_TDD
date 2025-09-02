@@ -91,4 +91,3 @@ class TestIntegracion(unittest.TestCase):
         self.assertTrue(self.bet_validator.check_bet(player_bet, True))
         self.assertFalse(self.bet_validator.check_bet(player_bet, False)) # Esto es para probar que en una ronda no especial no se podría usar esa apuesta
         self.arbitro.current_bet = player_bet
-

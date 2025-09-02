@@ -3,6 +3,15 @@ class BetValidator:
         self.current_bet = None
 
     def check_bet(self, new_bet, is_special_round):
+        """
+        Dado una apuesta, se chequea si esta es válida, evaluando la posibilidad de dividir la apuesta, salir de aces,
+        cambiar la apuesta si la nueva pinta tiene una pinta mayor,
+        cambiar la apuesta si hay misma pinta y mayor cantidad de dados, etc...
+
+
+        Returns:
+            bool: devuelve si la apuesta es valida o no
+        """
         if self.current_bet is None:
             if not is_special_round and not new_bet[1] == 1:
                 self.current_bet = new_bet
